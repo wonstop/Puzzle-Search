@@ -9,33 +9,7 @@ Example output
 ==============
 
 ```
-CSIS0270 Artificial intelligence (Dr. K. P. Chan, University of Hong Kong)
-Assignment 1.1 by Joonas Rouhiainen, 3035133686, joonas@hku.hk
-
-  a) Uninformed breadth-first search..................... ✓
-    * Execution time:      0:00:38.157394
-    * Path cost to goal:   26 moves
-    * Iterations:          431366
-    * Queue size at goal:  43269
-
-  b) Iterative deepening depth-first search........................................................................................ ✓
-    * Execution time:      0:02:15.790547
-    * Path cost to goal:   26 moves
-    * Iterations:          1778123
-    * Queue size at goal:  12
-
-  c I) A* search using number of misplaced tiles heuristic.. ✓
-    * Execution time:      0:00:10.448667
-    * Path cost to goal:   26 moves
-    * Iterations:          51959
-    * Queue size at goal:  23472
-
-  c II) A* search using sum of manhattan distances heuristic ✓
-    * Execution time:      0:00:02.321234
-    * Path cost to goal:   26 moves
-    * Iterations:          3381
-    * Queue size at goal:  1996
-
+>>>>>>>>
 ```
 
 Running
