@@ -1,7 +1,7 @@
 Assignment 1.1: Search algorithms
 =================
-
-This is an assignment submission for Dr. K. P. Chan's course **CSIS0270 Artificial intelligence**  (University of Hong Kong, 2014).
+Reffer to
+Dr. K. P. Chan's course **CSIS0270 Artificial intelligence**  (University of Hong Kong, 2014).
 
 My solution is a sliding tile puzzle solver written in Python 2.7. It solves the 8-puzzle position given in the assignment paper using breadth-first search (BFS), iterative deepening depth first search (IDDFS) and A* search. Some performance statistics are also provided to aid in comparing the algorithms.
 
