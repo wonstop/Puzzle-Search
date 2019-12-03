@@ -9,14 +9,15 @@ def result(iterations, queue, solvedBoard = None):
     "solved":     solvedBoard != None,
     "iterations": iterations,
     "queueSize":  len(queue),
-    "pathCost":   solvedBoard.moves if solvedBoard else None 
+    "pathCost":   solvedBoard.moves if solvedBoard else None ,
+    "StepSeq":    solvedBoard.get_steps() if solvedBoard else None
   }
 
 # Uninformed breadth-first search. Simple to implement yet uses a lot of memory.
 # Fringe is a first-in-first-out queue and the data structure used is python's
 # double ended queue (dequeue), a doubly-linked list with O(1) pop operation. We pop
 # from left and populate from right.
-def bfs(root_node, animate_progress):
+def ucs(root_node, animate_progress):
   iterations = 0 # Only for stats.
   visited = set()
   queue = deque([root_node])
@@ -29,15 +30,6 @@ def bfs(root_node, animate_progress):
     visited.add(node.tilehash()) # Mark current node as visited.
 
     if node.is_goal():
-      for delta in node.deltas:
-          if delta == (1,0):
-              print ('R')
-          elif delta == (0,1):
-              print ('D')
-          elif delta == (-1,0):
-              print ('L')
-          elif delta == (0,-1):
-              print ('U')
       return result(iterations, queue, node)
     # Populate queue from right with unvisited legal moves from shallowest node.
     queue.extend(
@@ -74,15 +66,6 @@ def iddfs(root_node, animate_progress):
       visited[node.tilehash()] = node.moves # Mark current node as visited.
 
       if node.is_goal():
-        for delta in node.deltas:
-          if delta == (1,0):
-              print ('R')
-          elif delta == (0,1):
-              print ('D')
-          elif delta == (-1,0):
-              print ('L')
-          elif delta == (0,-1):
-              print ('U')
         return result(iterations, queue, node)
      
       if node.moves < depth:
@@ -124,15 +107,6 @@ def a_star(root_node, animate_progress, heuristic):
     visited.add(node.tilehash()) # Mark current node as visited
 
     if node.is_goal():
-      for delta in node.deltas:
-          if delta == (1,0):
-              print ('R')
-          elif delta == (0,1):
-              print ('D')
-          elif delta == (-1,0):
-              print ('L')
-          elif delta == (0,-1):
-              print ('U')
       return result(iterations, queue.queue, node) # Goal test
 
     for entry in map(queue_entry, unvisited_children(node)):
@@ -165,15 +139,6 @@ def gbfs(root_node, animate_progress, heuristic):
     visited.add(node.tilehash()) # Mark current node as visited
 
     if node.is_goal():
-      for delta in node.deltas:
-          if delta == (1,0):
-              print ('R')
-          elif delta == (0,1):
-              print ('D')
-          elif delta == (-1,0):
-              print ('L')
-          elif delta == (0,-1):
-              print ('U')
       return result(iterations, queue.queue, node) # Goal test
 
     for entry in map(queue_entry, unvisited_children(node)):
@@ -199,7 +164,7 @@ def rbfs_r(node, heuristic, f_limit, iterations, animate_progress):
 
   node_f = node.moves + heuristic(node) # f embedded in board?
   if node.is_goal():
-    print("\n    * {:<20} {:<20}".format("Steps:", node.get_steps()))
+#    print("\n    * {:<20} {:<20}".format("Steps:", node.get_steps()))
     return (True, node_f, result(iterations, queue.queue, node)) # Goal test
     
   for entry in map(queue_entry, node.children()):
